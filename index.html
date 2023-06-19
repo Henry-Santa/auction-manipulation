@@ -8,37 +8,46 @@
 </head>
 <body>
     <div id="parameters">
-        <div class="input-group">
+        <div class="input-group tooltip">
+            
             <label for="maxItems">Max Items:</label>
             <input type="number" id="maxItems" min="0" value="45">
+            <span class="tooltip-text">Total items you are willing to purchase.</span>
         </div>
-        <div class="input-group">
+        <div class="input-group tooltip">
             <label for="minItems">Min Items:</label>
-            <input type="number" id="minItems" min="0" value="6">
+            <input type="number" id="minItems" min="0" value="6" >
+            <span class="tooltip-text">Minimum amount of items you are willing to purchase.</span>
         </div>
-        <div class="input-group">
+        <div class="input-group tooltip">
             <label for="maxBuyIn">Max Buy In:</label>
             <input type="number" id="maxBuyIn" min="0" value="15000000">
+            <span class="tooltip-text">Total coins you are willing to spend.</span>
         </div>
-        <div class="input-group">
+        <div class="input-group tooltip">
             <label for="minMultiplier">Min Multiplier:</label>
             <input type="number" id="minMultiplier" min="0" value="15">
+            <span class="tooltip-text">Minimum multiplier on the lowest price to the new price (only for roofed manipulations).</span>
         </div>
-        <div class="input-group">
+        <div class="input-group tooltip">
             <label for="minFlat">Min Flat:</label>
             <input type="number" id="minFlat" min="0" value="7000000">
+            <span class="tooltip-text">The minimum for the new price of the item (only for roofed manipulations).</span>
         </div>
-        <div class="input-group">
+        <div class="input-group tooltip">
             <label for="maxFirstPrice">Max First Price:</label>
             <input type="number" id="maxFirstPrice" min="0" value="2000000">
+            <span class="tooltip-text">Highest price willing to pay for the first item.</span>
         </div>
-        <div class="input-group">
+        <div class="input-group tooltip">
             <label for="minFirstPrice">Min First Price:</label>
             <input type="number" id="minFirstPrice" min="0" value="50000">
+            <span class="tooltip-text">Minimum price willing to pay for the first item.</span>
         </div>
-        <div class="input-group checkbox-group">
+        <div class="input-group checkbox-group tooltip">
             <input type="checkbox" id="hideDungeonItems" checked>
             <label for="hideDungeonItems" title="Hide Dungeon Items">Hide Dungeon Items</label>
+            <span class="tooltip-text">Hide dungeon items (can be easy to obtain).</span>
         </div>
         <div class="input-group">
             <button id="submitButton">Submit</button>

@@ -12,7 +12,7 @@ numberSort = function (a,b) {
 
 
 
-function createWidget(imageUrl, itemName, buyoutPrice, roofPrice, isRoof) {
+function createWidget(imageUrl, itemName, buyoutPrice, roofPrice, isRoof, real_name) {
     const containerId = isRoof ? 'roof' : 'no-roof';
     const container = document.getElementById(containerId);
 
@@ -28,13 +28,16 @@ function createWidget(imageUrl, itemName, buyoutPrice, roofPrice, isRoof) {
 
     const imageContainer = document.createElement('div');
     imageContainer.classList.add('image-container');
-
+    const imageL = document.createElement('a');
+    imageL.href = "./viewer.html?item="+real_name
+    imageL.target = "_blank"
     const image = document.createElement('img');
     image.src = imageUrl;
     if (image.src.includes("png")){
         imageContainer.classList.add("item");
     }
-    imageContainer.appendChild(image);
+    imageContainer.appendChild(imageL);
+    imageL.appendChild(image)
 
     widget.appendChild(imageContainer);
 
@@ -187,7 +190,7 @@ async function getManips(MAX_ITEMS, MIN_ITEMS, MAX_BUY_IN, MIN_MULTI, MIN_FLAT, 
     roof_manips.forEach((data, name) => {
         try{
         item_data = itemTable.get(name);
-        createWidget(item_data.image, item_data.name, data[1], data[0], true)
+        createWidget(item_data.image, item_data.name, data[1], data[0], true, name)
         } catch{
             console.log(name, data)
         }
@@ -197,7 +200,7 @@ async function getManips(MAX_ITEMS, MIN_ITEMS, MAX_BUY_IN, MIN_MULTI, MIN_FLAT, 
         try{
         item_data = itemTable.get(name);
 
-        createWidget(item_data.image, item_data.name, data, 0, false)
+        createWidget(item_data.image, item_data.name, data, 0, false, name)
         } catch{
             console.log(name, data)
         }
