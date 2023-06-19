@@ -161,14 +161,22 @@ async function getManips(MAX_ITEMS, MIN_ITEMS, MAX_BUY_IN, MIN_MULTI, MIN_FLAT, 
 
     
     roof_manips.forEach((data, name) => {
-        item_data = itemTable.get(name);
+        try{
+
         createWidget("https://sky.coflnet.com/static/icon/"+item_data.id, item_data.name, data[1], data[0], true)
+        } catch{
+            console.log(name, data)
+        }
     })
     console.log(no_roof_manips)
     no_roof_manips.forEach((data, name) => {
+        try{
         item_data = itemTable.get(name);
-        console.log(item_data, name)
+
         createWidget("https://sky.coflnet.com/static/icon/"+item_data.id, item_data.name, data, 0, false)
+        } catch{
+            console.log(name, data)
+        }
     })
 }
 
