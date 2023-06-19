@@ -157,12 +157,12 @@ async function getManips(MAX_ITEMS, MIN_ITEMS, MAX_BUY_IN, MIN_MULTI, MIN_FLAT, 
         
     })
     roof_manips = new Map([...roof_manips.entries()].sort((a, b) => b[1][0] - a[1][0]));
-    no_roof_manips = new Map([...no_roof_manips.entries()].sort((a, b) => b[1] - a[1]));
+    no_roof_manips = new Map([...no_roof_manips.entries()].sort((a, b) => a[1] - b[1]));
 
     
     roof_manips.forEach((data, name) => {
         try{
-
+        item_data = itemTable.get(name);
         createWidget("https://sky.coflnet.com/static/icon/"+item_data.id, item_data.name, data[1], data[0], true)
         } catch{
             console.log(name, data)
