@@ -1,0 +1,160 @@
+
+
+  .widget-container {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+
+h2 {
+    color: #294f52;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+
+  
+body {
+    background-color: #f2f2f2;
+    overflow: hidden;
+    background: linear-gradient(to bottom right, #b5e0cd, #ffe9a3);
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
+  }
+
+  
+  
+  /* Add more shape styles as needed */
+  
+  #parameters {
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.5);
+    
+  }
+  
+  /* Rest of the CSS styles for the inputs and submit button */
+  
+  
+  }
+  
+  /* Rest of the CSS styles for the inputs and submit button */
+  
+  
+  
+  .widget-container {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    white-space: nowrap;
+    background: rgba(255, 255, 255, 0.5);
+  }
+  
+  .widget {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 300px;
+    padding: 10px;
+    margin-right: 10px;
+    background-color: rgba(255, 255, 255, 0.5);;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+  }
+  
+  .widget h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1d4347;
+    text-align: center;
+    line-height: 1.2;
+    
+    text-overflow: ellipsis;
+    
+  }
+  
+  .widget .price {
+    font-weight: 700;
+  }
+  
+  .widget img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10px;
+  }
+  
+  
+  
+  .input-group {
+    margin-right: 20px;
+    margin-bottom: 10px;
+    flex: 0 0 auto;
+  }
+  
+  .input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .input-group input[type="text"],
+  .input-group input[type="checkbox"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .checkbox-group {
+    display: flex;
+    align-items: center;
+  }
+  
+  .checkbox-group label {
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+  
+  #submitButton {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #submitButton:hover {
+    background-color: #45a049;
+  }
+  
+  #submitButton:active {
+    background-color: #3e8e41;
+    transform: translateY(1px);
+  }
+  
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #ffeaa300;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #a5fad4;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #98c4ad;
+  }

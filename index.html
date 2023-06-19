@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auction Manipulation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="parameters">
+        <div class="input-group">
+            <label for="maxItems">Max Items:</label>
+            <input type="number" id="maxItems" min="0" value="45">
+        </div>
+        <div class="input-group">
+            <label for="minItems">Min Items:</label>
+            <input type="number" id="minItems" min="0" value="6">
+        </div>
+        <div class="input-group">
+            <label for="maxBuyIn">Max Buy In:</label>
+            <input type="number" id="maxBuyIn" min="0" value="15000000">
+        </div>
+        <div class="input-group">
+            <label for="minMultiplier">Min Multiplier:</label>
+            <input type="number" id="minMultiplier" min="0" value="15">
+        </div>
+        <div class="input-group">
+            <label for="minFlat">Min Flat:</label>
+            <input type="number" id="minFlat" min="0" value="7000000">
+        </div>
+        <div class="input-group">
+            <label for="maxFirstPrice">Max First Price:</label>
+            <input type="number" id="maxFirstPrice" min="0" value="2000000">
+        </div>
+        <div class="input-group">
+            <label for="minFirstPrice">Min First Price:</label>
+            <input type="number" id="minFirstPrice" min="0" value="50000">
+        </div>
+        <div class="input-group checkbox-group">
+            <input type="checkbox" id="hideDungeonItems" checked>
+            <label for="hideDungeonItems" title="Hide Dungeon Items">Hide Dungeon Items</label>
+        </div>
+        <div class="input-group">
+            <button id="submitButton">Submit</button>
+        </div>
+    </div>
+    <div class="widget-container" id="roof">
+        
+    </div>
+    <div class="widget-container" id="no-roof">
+        
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>
