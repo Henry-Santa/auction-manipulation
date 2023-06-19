@@ -21,7 +21,7 @@ h2 {
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
-  mix-blend-mode: multiply;
+  
 }
   
 body {
@@ -85,7 +85,7 @@ input, button {
     height: 300px;
     padding: 10px;
     margin-right: 10px;
-    background-color: #8b8b8b;;
+    background-color: #9dfcff5b;;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     flex-shrink: 0;

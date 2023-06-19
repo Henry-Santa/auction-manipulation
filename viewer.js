@@ -26,7 +26,7 @@ function createWidget(auctionInfo){
     container.style.display = "block"
     container.classList.add("widget")
     container.style.height = "100%"
-    
+    container.style.backgroundColor = "rgba(194,37,69,0.5)"
     document.getElementById("b").appendChild(container);
     
     var namecontainer = document.createElement("div")
@@ -38,11 +38,15 @@ function createWidget(auctionInfo){
     namecontainer.appendChild(image)
     var priceText = document.createElement("h2")
     priceText.classList.add("coin")
-    priceText.textContent = price
+    priceText.textContent = price.toLocaleString()
+    priceText.style.color = "black"
+    priceText.style["-webkit-text-fill-color"] = "black"
     container.appendChild(priceText)
     var nameLabel = document.createElement("h2")
     nameLabel.classList.add("name-label");
     nameLabel.textContent = name
+    nameLabel.style["-webkit-text-fill-color"] = "black"
+    nameLabel.style.color = "black"
     namecontainer.appendChild(nameLabel)
 }
 
@@ -77,6 +81,9 @@ async function getItemTable(){
 async function loadPage(){
     await getItemTable()
     document.getElementById("main").src = itemTable.get(myParam).image;
+    if (itemTable.get(myParam).image.includes("png")){
+        document.getElementById("a").classList.add("item");
+    }
     document.getElementById("name").innerText = itemTable.get(myParam).name;
     var resp = await fetch(API)
     var json = await resp.json()
