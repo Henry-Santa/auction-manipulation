@@ -12,7 +12,11 @@ h2 {
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-
+.item {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
   
 body {
     background-color: #f2f2f2;
@@ -41,7 +45,7 @@ body {
   /* Rest of the CSS styles for the inputs and submit button */
   
   
-  }
+  
   
   /* Rest of the CSS styles for the inputs and submit button */
   

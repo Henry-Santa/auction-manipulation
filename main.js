@@ -31,6 +31,10 @@ function createWidget(imageUrl, itemName, buyoutPrice, roofPrice, isRoof) {
 
     const image = document.createElement('img');
     image.src = imageUrl;
+    if (image.src.includes("png")){
+        console.log("fffff")
+        imageContainer.classList.add("item");
+    }
     imageContainer.appendChild(image);
 
     widget.appendChild(imageContainer);
@@ -45,7 +49,7 @@ function createWidget(imageUrl, itemName, buyoutPrice, roofPrice, isRoof) {
     const buyout = document.createElement('span');
     buyout.classList.add('price');
     buyout.textContent = '$' + buyoutPrice.toLocaleString("en-US");;
-    priceContainer.appendChild(buyout);
+    buyoutLabel.appendChild(buyout);
 
     if (isRoof) {
         const roofPriceLabel = document.createElement('p');
@@ -54,7 +58,7 @@ function createWidget(imageUrl, itemName, buyoutPrice, roofPrice, isRoof) {
     const roofPriceElement = document.createElement('span');
     roofPriceElement.classList.add('price');
     roofPriceElement.textContent = '$' + roofPrice.toLocaleString("en-US");;
-    priceContainer.appendChild(roofPriceElement);
+    roofPriceLabel.appendChild(roofPriceElement);
     }
     widget.appendChild(priceContainer);
 
@@ -218,4 +222,3 @@ document.getElementById('submitButton').addEventListener('click', function() {
 });
 
 
-createWidget("https://sky.coflnet.com/static/icon/"+"DUNGEON_STONE", "Protector Dragon Helmet Chestplate", 100000, 10000, true)
