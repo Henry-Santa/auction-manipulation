@@ -230,3 +230,24 @@ document.getElementById('submitButton').addEventListener('click', function() {
 });
 
 
+const roof = document.getElementById("roof");
+
+roof.addEventListener("wheel", (evt) => {
+    evt.preventDefault();
+    for (let i = 0; i < 300; i++){
+        setTimeout(()=> {
+            roof.scrollLeft += evt.deltaY
+        }, i)
+    }
+});
+const nroof = document.getElementById("no-roof");
+
+nroof.addEventListener("wheel", (evt) => {
+    evt.preventDefault();
+    for (let i = 0; i < 300; i++){
+        setTimeout(()=> {
+            nroof.scrollLeft += evt.deltaY
+        }, i)
+    }
+    
+});

@@ -1,4 +1,6 @@
-
+html {
+  scroll-behavior: smooth;
+}
 
   .widget-container {
     display: flex;
