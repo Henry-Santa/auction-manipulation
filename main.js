@@ -163,7 +163,7 @@ async function getManips(MAX_ITEMS, MIN_ITEMS, MAX_BUY_IN, MIN_MULTI, MIN_FLAT, 
                 } else if ( money_left < 0){
 
                 } else if (prices.length == ind){
-                    no_roof_manips.set(itemname, money_left)
+                    no_roof_manips.set(itemname, MAX_BUY_IN - money_left)
                 
                 } else{
                     roof_manips.set(itemname, [h_price, MAX_BUY_IN - money_left])
