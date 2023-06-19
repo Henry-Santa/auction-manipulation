@@ -7,10 +7,13 @@
   }
 
 h2 {
-    color: #294f52;
+    color: #fff428;
+    
+	  font-size: 34px;
+	  -webkit-text-stroke: 1px black;
+	  -webkit-text-fill-color: #fff428;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap');
 
 .item {
   image-rendering: pixelated;
@@ -25,9 +28,14 @@ body {
     background-repeat: no-repeat; 
     background-attachment: fixed;
     color:#ffffff;
+    font-family: 'Oxanium', cursive;
+    
   }
 
-  
+input, button {
+  font-family: 'Oxanium', cursive;
+  font-weight: bold;
+}
   
   /* Add more shape styles as needed */
   
@@ -56,6 +64,8 @@ body {
     overflow-x: auto;
     padding-bottom: 10px;
     white-space: nowrap;
+    font-size: large;
+    color: black;
     background: rgba(255, 255, 255, 0.5);
   }
   
@@ -76,9 +86,11 @@ body {
   
   .widget h3 {
     margin: 0;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 700;
+    
     color: #ffffff;
+    text-shadow: 2px 4px 4px rgba(21, 23, 15, 0.6);
     text-align: center;
     line-height: 1.2;
     

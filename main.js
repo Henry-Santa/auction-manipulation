@@ -32,7 +32,6 @@ function createWidget(imageUrl, itemName, buyoutPrice, roofPrice, isRoof) {
     const image = document.createElement('img');
     image.src = imageUrl;
     if (image.src.includes("png")){
-        console.log("fffff")
         imageContainer.classList.add("item");
     }
     imageContainer.appendChild(image);
@@ -95,13 +94,17 @@ async function getItemTable(){
 }
 
 async function getManips(MAX_ITEMS, MIN_ITEMS, MAX_BUY_IN, MIN_MULTI, MIN_FLAT, MAX_MIN_PRICE, MIN_MIN_PRICE, HIDE_NO_ROOF_MANIPS, HIDE_DUNGEON_ITEMS){
-    console.log(itemTable.get("HurricaneBow"));
+
     var resp = await fetch(API)
     var json = await resp.json()
     var pages = json.totalPages
-    console.log(pages)
+
     var items = new Map()
+    var promises = []
     for (let i = 0; i < pages; i++){
+        promises.push(new Promise(async (resolve, reject) => {
+            
+        
         var response = await fetch(`https://api.hypixel.net/skyblock/auctions?page=${i}`)
         var j = await response.json()
         j.auctions.forEach(auction => {
@@ -134,7 +137,10 @@ async function getManips(MAX_ITEMS, MIN_ITEMS, MAX_BUY_IN, MIN_MULTI, MIN_FLAT, 
             }
         });
         console.log("Page loaded", i)
+        resolve()
+    }))
     }
+    await Promise.all(promises)
     var roof_manips = new Map()
     var no_roof_manips = new Map()
     
@@ -172,6 +178,8 @@ async function getManips(MAX_ITEMS, MIN_ITEMS, MAX_BUY_IN, MIN_MULTI, MIN_FLAT, 
         }
         
     })
+    document.getElementById("roof").innerHTML = ""
+    document.getElementById("no-roof").innerHTML = ""
     roof_manips = new Map([...roof_manips.entries()].sort((a, b) => b[1][0] - a[1][0]));
     no_roof_manips = new Map([...no_roof_manips.entries()].sort((a, b) => a[1] - b[1]));
 
@@ -213,8 +221,8 @@ document.getElementById('submitButton').addEventListener('click', function() {
     const minFirstPrice = document.getElementById('minFirstPrice').value;
     const hideDungeon = document.getElementById('hideDungeonItems').value;
 
-    document.getElementById("roof").innerHTML = ""
-    document.getElementById("no-roof").innerHTML = ""
+    document.getElementById("roof").innerHTML = "Loading..."
+    document.getElementById("no-roof").innerHTML = "Loading..."
 
     getManips(maxItems, minItems, maxBuyIn, minMultiplier, minFlat, maxFirstPrice, minFirstPrice, false, hideDungeon);
 
