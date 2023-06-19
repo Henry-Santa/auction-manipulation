@@ -20,6 +20,7 @@ body {
     background: linear-gradient(to bottom right, #b5e0cd, #ffe9a3);
     background-repeat: no-repeat; 
     background-attachment: fixed;
+    color:#ffffff;
   }
 
   
@@ -63,7 +64,7 @@ body {
     height: 300px;
     padding: 10px;
     margin-right: 10px;
-    background-color: rgba(255, 255, 255, 0.5);;
+    background-color: #8b8b8b;;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     flex-shrink: 0;
@@ -73,7 +74,7 @@ body {
     margin: 0;
     font-size: 14px;
     font-weight: 700;
-    color: #1d4347;
+    color: #ffffff;
     text-align: center;
     line-height: 1.2;
     

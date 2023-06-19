@@ -64,7 +64,7 @@ function createWidget(imageUrl, itemName, buyoutPrice, roofPrice, isRoof) {
 async function getItemTable(){
     var resp = await fetch(ITEMSAPI);
     var json = await resp.json()
-    json.items.forEach(item => {
+    json.items.forEach(async item => {
         let real_name = ""
         for (let char of item.name){
             if (ALPHA.includes(char)) {
@@ -74,7 +74,19 @@ async function getItemTable(){
         REFORGES.forEach(reforge => {
             real_name = real_name.replace(reforge, "")
         })
-        itemTable.set(real_name, {name : item.name, id : item.id})
+        var image_link = "./images/" + item.material.toLowerCase() + ".png"
+        if (item.material == "SKULL_ITEM"){
+            if (item.skin == undefined){
+                console.log(item)
+            } else{
+                var hash = JSON.parse(atob(item.skin)).textures.SKIN.url.split("/")
+                hash = hash[hash.length-1]
+                image_link = "https://nmsr.nickac.dev/headiso/" + hash
+                
+            }
+        }
+
+        itemTable.set(real_name, {name : item.name, id : item.id, image : image_link})
     })
 }
 
@@ -163,7 +175,7 @@ async function getManips(MAX_ITEMS, MIN_ITEMS, MAX_BUY_IN, MIN_MULTI, MIN_FLAT, 
     roof_manips.forEach((data, name) => {
         try{
         item_data = itemTable.get(name);
-        createWidget("https://sky.coflnet.com/static/icon/"+item_data.id, item_data.name, data[1], data[0], true)
+        createWidget(item_data.image, item_data.name, data[1], data[0], true)
         } catch{
             console.log(name, data)
         }
@@ -173,7 +185,7 @@ async function getManips(MAX_ITEMS, MIN_ITEMS, MAX_BUY_IN, MIN_MULTI, MIN_FLAT, 
         try{
         item_data = itemTable.get(name);
 
-        createWidget("https://sky.coflnet.com/static/icon/"+item_data.id, item_data.name, data, 0, false)
+        createWidget(item_data.image, item_data.name, data, 0, false)
         } catch{
             console.log(name, data)
         }
