@@ -157,9 +157,13 @@ const nroof = document.getElementById("b");
 
 nroof.addEventListener("wheel", (evt) => {
     evt.preventDefault();
+    console.log(evt.deltaY)
     for (let i = 0; i < 300; i++){
         setTimeout(()=> {
-            nroof.scrollLeft += 3 ? evt.deltaY > 0 : -3
+            if (evt.deltaY > 0) {nroof.scrollLeft += 3} else{
+                nroof.scrollLeft -= 3;
+            }
+            
         }, i)
     }
     
