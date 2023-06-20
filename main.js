@@ -239,7 +239,7 @@ roof.addEventListener("wheel", (evt) => {
     evt.preventDefault();
     for (let i = 0; i < 300; i++){
         setTimeout(()=> {
-            roof.scrollLeft += evt.deltaY
+            roof.scrollLeft += 3 ? evt.deltaY > 0 : -3
         }, i)
     }
 });
@@ -249,7 +249,7 @@ nroof.addEventListener("wheel", (evt) => {
     evt.preventDefault();
     for (let i = 0; i < 300; i++){
         setTimeout(()=> {
-            nroof.scrollLeft += evt.deltaY
+            nroof.scrollLeft += 3 ? evt.deltaY > 0 : -3
         }, i)
     }
     
