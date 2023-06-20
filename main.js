@@ -96,7 +96,7 @@ async function getItemTable(){
     })
 }
 
-async function getManips(MAX_ITEMS, MIN_ITEMS, MAX_BUY_IN, MIN_MULTI, MIN_FLAT, MAX_MIN_PRICE, MIN_MIN_PRICE, HIDE_NO_ROOF_MANIPS, HIDE_DUNGEON_ITEMS){
+async function getManips(MAX_ITEMS, MIN_ITEMS, MAX_BUY_IN, MIN_MULTI, MIN_FLAT, MAX_MIN_PRICE, MIN_MIN_PRICE, HIDE_NO_ROOF_MANIPS, HIDE_DUNGEON_ITEMS, HIDE_DRAGON_ITEMS){
 
     var resp = await fetch(API)
     var json = await resp.json()
@@ -119,6 +119,7 @@ async function getManips(MAX_ITEMS, MIN_ITEMS, MAX_BUY_IN, MIN_MULTI, MIN_FLAT, 
             else if (auction["item_lore"].toLowerCase().includes("cosmetic")) { }
             else if (auction["item_name"].toLowerCase().includes("rune")) { }
             else if (auction["item_lore"].toLowerCase().includes("dungeon") && HIDE_DUNGEON_ITEMS) { }
+            else if (auction["item_name"].toLowerCase().includes("dragon") && HIDE_DRAGON_ITEMS) { }
             else {
                 let real_name = ""
                 for (let char of auction["item_name"]){
@@ -223,11 +224,12 @@ document.getElementById('submitButton').addEventListener('click', function() {
     const maxFirstPrice = document.getElementById('maxFirstPrice').value;
     const minFirstPrice = document.getElementById('minFirstPrice').value;
     const hideDungeon = document.getElementById('hideDungeonItems').value;
+    const hideDragon = document.getElementById('hideDragonItems').value;
 
     document.getElementById("roof").innerHTML = "Loading..."
     document.getElementById("no-roof").innerHTML = "Loading..."
 
-    getManips(maxItems, minItems, maxBuyIn, minMultiplier, minFlat, maxFirstPrice, minFirstPrice, false, hideDungeon);
+    getManips(maxItems, minItems, maxBuyIn, minMultiplier, minFlat, maxFirstPrice, minFirstPrice, false, hideDungeon, hideDragon);
 
     
 });
