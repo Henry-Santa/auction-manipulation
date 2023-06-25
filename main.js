@@ -96,7 +96,7 @@ async function getItemTable(){
     })
 }
 
-async function getManips(MAX_ITEMS, MIN_ITEMS, MAX_BUY_IN, MIN_MULTI, MIN_FLAT, MAX_MIN_PRICE, MIN_MIN_PRICE, HIDE_NO_ROOF_MANIPS, HIDE_DUNGEON_ITEMS, HIDE_DRAGON_ITEMS){
+async function getManips(MAX_ITEMS, MIN_ITEMS, MAX_BUY_IN, MIN_MULTI, MIN_FLAT, MAX_MIN_PRICE, MIN_MIN_PRICE, HIDE_NO_ROOF_MANIPS, HIDE_DUNGEON_ITEMS, HIDE_DRAGON_ITEMS, HIDE_PET_SKINS, HIDE_FURNITURE){
 
     var resp = await fetch(API)
     var json = await resp.json()
@@ -111,12 +111,13 @@ async function getManips(MAX_ITEMS, MIN_ITEMS, MAX_BUY_IN, MIN_MULTI, MIN_FLAT, 
         var response = await fetch(`https://api.hypixel.net/skyblock/auctions?page=${i}`)
         var j = await response.json()
         j.auctions.forEach(auction => {
+            
             if (!auction.bin) { }
-            else if (auction["item_lore"].toLowerCase().includes("furniture")) { }
-            else if (auction["item_name"].toLowerCase().includes("pet skin")) { }
+            else if (auction["item_lore"].toLowerCase().includes("furniture") && HIDE_FURNITURE) { }
+            else if (auction["item_lore"].toLowerCase().includes("pet skin") && HIDE_PET_SKINS) { }
             else if (auction["item_name"].toLowerCase().includes("minion skin")) { }
             else if (auction["item_name"].toLowerCase().includes("potion")) { }
-            else if (auction["item_lore"].toLowerCase().includes("cosmetic")) { }
+            else if (auction["item_lore"].toLowerCase().includes("cosmetic") && !auction["item_lore"].toLowerCase().includes("pet skin")) {  }
             else if (auction["item_name"].toLowerCase().includes("rune")) { }
             else if (auction["item_lore"].toLowerCase().includes("dungeon") && HIDE_DUNGEON_ITEMS) { }
             else if (auction["item_name"].toLowerCase().includes("dragon") && HIDE_DRAGON_ITEMS) { }
@@ -193,6 +194,7 @@ async function getManips(MAX_ITEMS, MIN_ITEMS, MAX_BUY_IN, MIN_MULTI, MIN_FLAT, 
         item_data = itemTable.get(name);
         createWidget(item_data.image, item_data.name, data[1], data[0], true, name)
         } catch{
+            createWidget("https://nmsr.nickac.dev/headiso/4bd3c16af6654f229681370b81cb1636", name, data[1], data[0], true, name)
             console.log(name, data)
         }
     })
@@ -223,13 +225,17 @@ document.getElementById('submitButton').addEventListener('click', function() {
     const minFlat = document.getElementById('minFlat').value;
     const maxFirstPrice = document.getElementById('maxFirstPrice').value;
     const minFirstPrice = document.getElementById('minFirstPrice').value;
-    const hideDungeon = document.getElementById('hideDungeonItems').value;
-    const hideDragon = document.getElementById('hideDragonItems').value;
+    const hideDungeon = document.getElementById('hideDungeonItems').checked;
+    const hideDragon = document.getElementById('hideDragonItems').checked;
+    const hidePetSkin = document.getElementById('hidePetSkins').checked;
+    const hideFurniture = document.getElementById('hideFurniture').checked;
+
+    console.log(maxItems, minItems, maxBuyIn, minMultiplier, minFlat, maxFirstPrice, minFirstPrice, false, hideDungeon, hideDragon, hidePetSkin, hideFurniture)
 
     document.getElementById("roof").innerHTML = "Loading..."
     document.getElementById("no-roof").innerHTML = "Loading..."
 
-    getManips(maxItems, minItems, maxBuyIn, minMultiplier, minFlat, maxFirstPrice, minFirstPrice, false, hideDungeon, hideDragon);
+    getManips(maxItems, minItems, maxBuyIn, minMultiplier, minFlat, maxFirstPrice, minFirstPrice, false, hideDungeon, hideDragon, hidePetSkin, hideFurniture);
 
     
 });
